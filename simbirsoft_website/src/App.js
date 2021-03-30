@@ -1,42 +1,34 @@
 import React, { Component } from 'react';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NaviBar from './Components/NaviBar';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import styled from 'styled-components';
+//import { Button } from 'react-bootstrap';
+import {Link, BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Header from './Components/Header';
+import Team from './pages/Team';
+import Leag from './pages/Leag';
 
-import {Leag} from './Leag';
-import {Teams} from './Teams';
-import {CalendTeam} from './CalendarTeam';
-import {CalendLeag} from './CalendarLeag';
-
-const config = {
-  headers: {"X-Auth-Token": '716110be467a449db37bde0affb10e9c'}
-}
-
- function App() {
-  // gettingMatch = async(event) => {//async чтобы всё работало ассинхронно(без перезагрузки)
-  //   event.preventDefault();
-
-  //    const api_url = await 
-  //    fetch(`http://api.football-data.org/v2/competitions/`, config);
-  //    const data = await api_url.json();
-  //    console.log(data);
-  // }
-    return(
-      <>
-      <Router>
-        <NaviBar>
+class App extends Component {
+	render() {
+		return (
+			<div >
+        <Router>   
+        <Header/>
           <Switch>
-            <Route exact path='/' component={Leag}/>
-            <Route exact path='/team' component={Teams}/>
-            <Route exact path='/calendLeag' component={CalendLeag}/>
-            <Route exact path='/calendTeam' component={CalendTeam}/> 
+            <Route path='/team' component={Team}/>
+            <Route path='/leag' component={Leag}/>
           </Switch>
-        </NaviBar>
-      </Router>
-      </>
-  //     <form onSubmit={this.gettingMatch}>
-  //     <button>Получить Матчи</button>
-  //      </form>
-    )
+        </Router>
+			</div>
+		);
+	}
 }
+
 export default App;
+
+
+
+
+
+
+
