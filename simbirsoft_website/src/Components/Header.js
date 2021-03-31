@@ -23,7 +23,14 @@ export default class Header extends Component {
       <Styles>
         <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
             <Container>
-            <Navbar.Brand ><Link to='/'><img width={'50px'} src={ball}/>Football</Link></Navbar.Brand>
+            <Navbar.Brand ><Link to='/'>
+                <img    
+                    height="30"
+                    width="30"
+                    className="d-inline-block align-top"
+                    alt="Logo" 
+                    src={ball}
+                />Football</Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className='mr-auto'>
