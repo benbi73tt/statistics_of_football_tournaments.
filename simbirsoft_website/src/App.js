@@ -7,6 +7,9 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Header from './Components/Header';
 import Team from './pages/Team';
 import Leag from './pages/Leag';
+import CalendarLeag from './pages/CalendLeag';
+
+
 
 class App extends Component {
 	render() {
@@ -17,6 +20,7 @@ class App extends Component {
           <Switch>
             <Route path='/team' component={Team}/>
             <Route path='/leag' component={Leag}/>
+            <Route path='/Calendarleag' component={CalendarLeag}/>
           </Switch>
         </Router>
 			</div>

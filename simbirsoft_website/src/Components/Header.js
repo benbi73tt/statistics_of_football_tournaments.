@@ -36,6 +36,7 @@ export default class Header extends Component {
             <Nav className='mr-auto'>
                 <Nav.Link><Link to='/team'>Team</Link></Nav.Link>
                 <Nav.Link><Link to='/leag'>Leag</Link></Nav.Link>
+                <Nav.Link><Link to='/Calendarleag'>CalendarLeag</Link></Nav.Link>
             </Nav>
             </Navbar.Collapse>
             </Container>
