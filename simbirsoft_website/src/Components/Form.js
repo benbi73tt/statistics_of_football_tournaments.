@@ -6,6 +6,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 const form = (props) => (
 	<form onSubmit={props.MatchingMethod}>
+		<h4>Enter the league code </h4>
 		<TextField type="text" name="leag" id="standard-basic" label="League" />
 		<FormControl>
 			<InputLabel htmlFor="age-native-helper">League</InputLabel>
