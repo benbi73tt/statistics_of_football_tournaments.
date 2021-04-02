@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import {Container, Navbar, Nav} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import ball from '../img/redball.png';
-// import Team from '../pages/Team';
-// import Leag from '../pages/Leag'
+
 
 
 const Styles=styled.div`
