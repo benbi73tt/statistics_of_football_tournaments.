@@ -23,7 +23,7 @@ export default class Header extends Component {
       <Styles>
         <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
             <Container>
-            <Navbar.Brand ><Link to='/'>
+            <Navbar.Brand ><Link to='/home'>
                 <img    
                     height="30"
                     width="30"
