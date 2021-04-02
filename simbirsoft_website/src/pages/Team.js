@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 
 const config = {
+    method:'GET',
     headers: {"X-Auth-Token": '716110be467a449db37bde0affb10e9c'}
   }
 
@@ -11,7 +13,9 @@ export default class leag extends Component {
         this.state = {
              error:null,
              isLoaded:false,
-             items:[]
+             items:[],
+             filterItems:[],
+             check:''
         };
     }
     
@@ -19,18 +23,19 @@ export default class leag extends Component {
         event.preventDefault();
     
          const api_url = await 
-         fetch(`http://api.football-data.org/v2/competitions/`, config);
+         fetch(`http://api.football-data.org/v2/teams/`, config);
          const data = await api_url.json();
-         console.log(data);
+         console.log(data.teams);
       }
       componentDidMount(){
-          fetch(`http://api.football-data.org/v2/competitions/`, config)
+          fetch(`http://api.football-data.org/v2/teams/`, config)
           .then(res=>res.json())
           .then(
                 (result)=>{
                     this.setState({
                         isLoaded:true,
-                        items: result.competitions
+                        filterItems: result.teams,
+                        items:result.teams
                     })
                 },
                 (error)=>{
@@ -41,9 +46,21 @@ export default class leag extends Component {
                 },
           )
       }
+      filted=(event)=>{
+          this.setState({
+              check:event.target.value,
+          })
+          let filt=this.state.items.filter(item=>{
+             return item.name.toLowerCase().search(this.state.check.toLowerCase())!==-1;
+      })
+      this.setState({
+          filterItems:filt
+      })
+    }
+
 
     render() {
-        const {error, isLoaded, items}=this.state;
+        const {error, isLoaded, items,filterItems}=this.state;
         if(error){
             return (
                 <form onSubmit={this.gettingMatch}>
@@ -61,21 +78,32 @@ export default class leag extends Component {
             )
         }else{
             return (
-                <div>
+                <Container className="cont "  style={{paddingTop:'2rem', paddingBottom:'2rem'}}>
+                <Row>
+                  <Col md='9'>
                     <form onSubmit={this.gettingMatch}>
                         <button>Получить Матчи</button>
                     </form>
                     <ul>
-                        {items.map(item=>(
+                        {filterItems.map(item=>(
                             <li key={item.id}>
-                                {item.name}
+                              <img width={'20px'} height={'20px'} src={item.crestUrl}/> 
+                              {item.name}     <p>ID команды:{item.code===null?"___":item.id}</p>      
                             </li>
                         ))}
                     </ul>
-                </div>
+                    </Col>
+                    <Col mt='5' pt='5' md='3' >
+                        <form >
+                            <p>Найти матч</p>
+                            <input onChange={this.filted}/>
+                             {console.log(this.state.check)}
+                        </form>
+                    </Col>
+        </Row>
+       </Container>
                 )
             
         }
     }
 }
-

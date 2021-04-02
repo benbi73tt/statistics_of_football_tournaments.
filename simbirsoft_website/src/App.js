@@ -9,6 +9,7 @@ import Team from './pages/Team';
 import Leag from './pages/Leag';
 import Home from './pages/Home';
 import CalendarLeag from './pages/CalendLeag';
+import CalendarTeam from './pages/CalendarTeam';
 
 
 
@@ -24,6 +25,7 @@ class App extends Component {
             <Route path='/team' component={Team}/>
             <Route path='/leag' component={Leag}/>
             <Route path='/Calendarleag' component={CalendarLeag}/>
+            <Route path='/Calendarteam' component={CalendarTeam}/>
           </Switch>
         </Router>
 			</div>

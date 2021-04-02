@@ -2,21 +2,22 @@ import React, { Component } from 'react'
 import Form from '../Components/Form';
 import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import winner from '../img/winner.png';
-import draw from '../img/free-icon-not-equal-3898212.png';
+import draw from '../img/free-icon-not-equal-3898212.png';  
 
 
 const config = {
+  method:'GET',
     headers: {"X-Auth-Token": '716110be467a449db37bde0affb10e9c'}
   }
 
-export default class App extends Component {
+export default class CalendarLeag extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
              error:null,
              isLoaded:false,
-             items:[]
+             items:[],
         };
     }
 
@@ -65,6 +66,9 @@ export default class App extends Component {
      }
 
   }
+
+
+
   render() {
     const {items, error}=this.state;
     if(error){
@@ -107,9 +111,8 @@ export default class App extends Component {
           </Col>
           <Col mt='5' pt='5' md='3' >
             <form >
-              <p>Найти нужный матч</p>
-              <input/>
-              <button>hello</button>
+                <p>Найти матч</p>
+                <input onChange={(event)=>console.log(event.target.value)}/>
             </form>
           </Col>
         </Row>
