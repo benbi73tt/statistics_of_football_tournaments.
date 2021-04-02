@@ -8,7 +8,7 @@ const form = (props) => (
 	<form onSubmit={props.MatchingMethod}>
 		<TextField type="text" name="leag" id="standard-basic" label="League" />
 		<FormControl>
-			<InputLabel htmlFor="age-native-helper">Age</InputLabel>
+			<InputLabel htmlFor="age-native-helper">League</InputLabel>
 			<NativeSelect
 				name="leag1"
 				inputProps={{
