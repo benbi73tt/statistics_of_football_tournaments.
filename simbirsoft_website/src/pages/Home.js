@@ -11,8 +11,8 @@ export default function Home() {
 					alt="First slide"
 				/>
 				<Carousel.Caption>
-					<h3>Спортивная статистика</h3>
-					<p>Все матчи за сезоны, все команды, все лиги и еще многое другое...</p>
+					<h3>Sports statistics</h3>
+					<p>All matches for seasons, all teams, all leagues and much more ...</p>
 				</Carousel.Caption>
 			</Carousel.Item>
 			<Carousel.Item style={{ height: '160px' }}>

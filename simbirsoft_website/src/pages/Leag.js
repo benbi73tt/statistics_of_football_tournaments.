@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
+import { TextField } from '@material-ui/core';
 
 const config = {
 	method: 'GET',
@@ -57,55 +58,34 @@ export default class leag extends Component {
 	};
 
 	render() {
-		const { error, isLoaded, items, filterItems } = this.state;
+		const { error, isLoaded, filterItems } = this.state;
 		if (error) {
-			return (
-				<form onSubmit={this.gettingMatch}>
-					<button>Получить Матчи</button>
-					<h1>Error {error.message}</h1>
-				</form>
-			);
+			return <h1>Error {error.message}</h1>;
 		} else if (!isLoaded) {
-			return (
-				<form onSubmit={this.gettingMatch}>
-					<button>Получить Матчи</button>
-					<h1>Loading...</h1>
-				</form>
-			);
+			return <h1>Loading...</h1>;
 		} else {
 			return (
 				<Container className="cont " style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
 					<Row>
 						<Col mt="5" pt="5" md="6">
 							<form>
-								<p>Найти матч</p>
-								<input onChange={this.filted} />
+								<TextField id="standard-basic" label="Find a team" onChange={this.filted} />
 								{console.log(this.state.check)}
 							</form>
 						</Col>
 						<Col md="5">
-							<form onSubmit={this.gettingMatch}>
-								<button>Получить Матчи</button>
-							</form>
 							<ul>
 								{filterItems.map((item) => (
 									<li key={item.id}>
 										{item.emblemUrl === null ? (
 											''
 										) : (
-											<img width={'20px'} height={'20px'} src={item.emblemUrl} />
+											<img alt="logo" width={'20px'} height={'20px'} src={item.emblemUrl} />
 										)}
-										{item.name} <p>Код лиги:{item.code === null ? '___' : item.code}</p>
+										{item.name} <p>League code:{item.code === null ? '___' : item.code}</p>
 									</li>
 								))}
 							</ul>
-						</Col>
-						<Col mt="5" pt="5" md="3">
-							<form>
-								<p>Найти матч</p>
-								<input onChange={this.filted} />
-								{console.log(this.state.check)}
-							</form>
 						</Col>
 					</Row>
 				</Container>

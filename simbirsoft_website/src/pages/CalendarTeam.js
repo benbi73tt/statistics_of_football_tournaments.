@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Col, Container, Row, Button } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import FormT from '../Components/FormT';
 import winner from '../img/winner.png';
 import draw from '../img/free-icon-not-equal-3898212.png';
@@ -40,7 +40,7 @@ export default class CalendarTeam extends Component {
 					items: [],
 					error: (
 						<h5>
-							<h1>Неправильный ID команды,</h1>пожалуйста, попробуйте снова
+							<h4>Invalid team ID,</h4>please try again
 						</h5>
 					)
 				});
@@ -48,18 +48,22 @@ export default class CalendarTeam extends Component {
 		} else {
 			this.setState({
 				items: [],
-				error: <h4>Введите id команды</h4>
+				error: <h4>Enter the team ID</h4>
 			});
 		}
 	};
 	render() {
-		const { items, error } = this.state;
+		const { error } = this.state;
 		if (error) {
 			return (
-				<div className="wrapper">
-					<FormT MatchingMethod={this.gettingMatching} />
-					<span>{error}</span>
-				</div>
+				<Container className="cont " style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+					<Row>
+						<Col md="9">
+							<FormT MatchingMethod={this.gettingMatching} />
+							<span>{error}</span>
+						</Col>
+					</Row>
+				</Container>
 			);
 		} else {
 			const list = this.state.items.map((item, index) => {
@@ -69,12 +73,12 @@ export default class CalendarTeam extends Component {
 						<td>{item.utcDate.replace(/[a-zа-яё]/gi, ' ')}</td>
 						<td>
 							{item.homeTeam.name}
-							{item.score.winner === 'HOME_TEAM' ? <img src={winner} /> : ''}
+							{item.score.winner === 'HOME_TEAM' ? <img alt="winner" src={winner} /> : ''}
 						</td>
-						<td> {item.score.winner === 'DRAW' ? <img src={draw} /> : ''}</td>
+						<td> {item.score.winner === 'DRAW' ? <img alt="draw" src={draw} /> : ''}</td>
 						<td>
 							{item.awayTeam.name}
-							{item.score.winner === 'AWAY_TEAM' ? <img src={winner} /> : ''}
+							{item.score.winner === 'AWAY_TEAM' ? <img alt="winner" src={winner} /> : ''}
 						</td>
 					</tr>
 				);

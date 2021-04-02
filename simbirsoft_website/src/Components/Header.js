@@ -6,6 +6,7 @@ import ball from '../img/redball.png';
 
 
 
+
 const Styles=styled.div`
     a, .navbar-brand, .navbar-nav .nav-link{
         color:#adb1b8;
